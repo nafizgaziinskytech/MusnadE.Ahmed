@@ -4,7 +4,8 @@
    Design tokens
    ========================================================================== */
 :root {
-    --font-primary: 'Space Grotesk', sans-serif;
+    --font-primary:  "GFS Didot", serif;
+    --font-secondary: "Poppins", sans-serif;
 
     --color-bg: 10 10 10;
     --color-bg-alt: 12 12 12;
@@ -47,18 +48,18 @@
 html { scroll-behavior: smooth; }
 body {
     margin: 0;
-    font-family: var(--font-primary);
+    font-family: var(--font-secondary);
     background-color: rgb(var(--color-bg));
     color: rgb(var(--color-white));
     overflow-x: hidden;
     line-height: 1.4;
 }
-h1, h2, h3, h4, h5, p { margin: 0; }
+h1, h2, h3, h4, h5, p { margin: 0; font-family:var(--font-primary) ;}
 ul { list-style: none; margin: 0; padding: 0; }
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
-button { font-family: inherit; cursor: pointer; border: none; }
-input { font-family: inherit; }
+button { font-family: var(--font-secondary); cursor: pointer; border: none; }
+input { font-family: var(--font-secondary); }
 svg { display: block; }
 
 ::selection {
@@ -66,7 +67,7 @@ svg { display: block; }
     color: rgb(var(--color-white));
 }
 
-.bg-surface { background-color: rgb(var(--color-bg-alt)); }
+.bg-surface { background-color: rgb(5 12 51 / 49%); }
 .bg-surface-darker { background-color: rgb(var(--color-bg-darker)); }
 
 .hero-glow {
@@ -93,6 +94,7 @@ svg { display: block; }
 
 .section-header { text-align: center; margin-bottom: 5rem; }
 .section-header .eyebrow {
+    font-family: var(--font-secondary);
     color: rgb(var(--color-indigo-500));
     font-weight: 700;
     letter-spacing: 0.3em;
@@ -142,7 +144,7 @@ svg { display: block; }
     background: none;
     border: none;
     cursor: pointer;
-    font-family: inherit;
+    font-family: var(--font-secondary);
     font-size: 1.15rem;
     font-weight: 700;
     letter-spacing: -0.02em;
@@ -476,7 +478,7 @@ html { scroll-padding-top: 6rem; }
    ========================================================================== */
 .hero {
     position: relative;
-    margin-top:70px ;
+    margin-top:80px ;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -546,6 +548,7 @@ html { scroll-padding-top: 6rem; }
 }
 
 .hero-subtitle {
+    font-family: var(--font-secondary);
     font-size: 18px;
     color: rgb(var(--color-slate-400));
     max-width: 36rem;
@@ -608,7 +611,7 @@ html { scroll-padding-top: 6rem; }
 
 .story-year { display: block; margin-bottom: 1rem; font-size: 1.25rem; font-weight: 700; color: rgb(var(--color-indigo-500)); }
 .story-heading { font-size: 1.875rem; font-weight: 700; margin-bottom: 1.5rem; }
-.story-text { font-size: 1.125rem; line-height: 1.7; color: rgb(var(--color-slate-400)); }
+.story-text {font-family:var(--font-secondary); font-size: 1.125rem; line-height: 1.7; color: rgb(var(--color-slate-400)); }
 
 /* ==========================================================================
    Experience timeline
@@ -626,7 +629,7 @@ html { scroll-padding-top: 6rem; }
 }
 @media (min-width: 768px) { .experience-watermark { font-size: 6rem; } }
 
-.timeline { display: flex; flex-direction: column; gap: 8rem; max-width: 64rem; margin: 0 auto; }
+.timeline { position: relative; display: flex; flex-direction: column; gap: 8rem; max-width: 64rem; margin: 0 auto; }
 .timeline-item { position: relative; padding-left: 3rem; }
 @media (min-width: 768px) { .timeline-item { padding-left: 0; } }
 
@@ -662,7 +665,7 @@ html { scroll-padding-top: 6rem; }
 }
 
 .timeline-heading { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; }
-.timeline-text { color: rgb(var(--color-slate-400)); }
+.timeline-text { font-family: var(--font-secondary);color: rgb(var(--color-slate-400)); }
 
 /* ==========================================================================
    Ventures
@@ -680,7 +683,7 @@ html { scroll-padding-top: 6rem; }
 }
 @media (min-width: 768px) { .ventures-header { flex-direction: row; align-items: flex-end; } }
 .ventures-header h2 { margin-bottom: 1rem; }
-.ventures-header p { color: rgb(var(--color-slate-400)); max-width: 36rem; }
+.ventures-header p { font-family: var(--font-secondary);color: rgb(var(--color-slate-400)); max-width: 36rem; }
 
 .ventures-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
 @media (min-width: 768px) { .ventures-grid { grid-template-columns: repeat(3, 1fr); } }
@@ -762,13 +765,13 @@ html { scroll-padding-top: 6rem; }
     text-decoration: underline;
     text-decoration-color: rgb(var(--color-indigo-500) / 0.3);
 }
-.motive-text { font-size: 1.25rem; line-height: 1.7; color: rgb(var(--color-slate-400)); max-width: 42rem; margin: 0 auto; }
+.motive-text { font-family:var(--font-secondary);font-size: 18px; line-height: 1.7; color: rgb(var(--color-slate-400)); max-width: 42rem; margin: 0 auto; }
 
 /* ==========================================================================
    Gallery
    ========================================================================== */
-.gallery-intro { color: rgb(var(--color-slate-400)); }
-.gallery-intro .muted { color: rgb(var(--color-slate-600)); }
+.gallery-intro { font-family: var(--font-secondary);color: rgb(var(--color-slate-400)); }
+.gallery-intro .muted { display: none; font-family: var(--font-secondary); color: rgb(var(--color-slate-600)); }
 
 .gallery-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
 @media (min-width: 768px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -821,7 +824,7 @@ html { scroll-padding-top: 6rem; }
     margin-bottom: 4rem;
     gap: 1rem;
 }
-.blogs-header p { color: rgb(var(--color-slate-400)); }
+.blogs-header p { font-family: var(--font-secondary); color: rgb(var(--color-slate-400)); }
 .blogs-link {
     display: none;
     color: rgb(var(--color-indigo-500));
@@ -855,10 +858,12 @@ html { scroll-padding-top: 6rem; }
 .blog-card.c-blue:hover .blog-title { color: rgb(var(--color-blue-400)); }
 
 .blog-text {
+    font-family: var(--font-secondary);
     color: rgb(var(--color-slate-400));
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    font-size: 18px;
     overflow: hidden;
 }
 
