@@ -73,7 +73,7 @@ svg { display: block; }
 .hero-glow {
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at 50% 50%, rgb(var(--color-indigo-500) / 0.1), transparent 70%);
+    background: url("bg-musnad.png");
 }
 
 .tech-grid {
@@ -479,7 +479,7 @@ html { scroll-padding-top: 6rem; }
 .hero {
     position: relative;
     margin-top:80px ;
-    /* min-height: 100vh; */
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
