@@ -73,7 +73,8 @@ svg { display: block; }
 .hero-glow {
     position: absolute;
     inset: 0;
-    background: url("bg-musnad.png");
+    background-image: url(bg-musnad.png);
+    background-size: cover;
 }
 
 .tech-grid {
