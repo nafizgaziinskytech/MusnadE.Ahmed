@@ -269,6 +269,7 @@ html { scroll-padding-top: 6rem; }
    Circle Navbar
    ========================================================================== */
 #circle-navbar {
+    display: none;
     position: fixed;
     left: -196px;
     top: 50%;
@@ -281,7 +282,7 @@ html { scroll-padding-top: 6rem; }
     border: 1px solid rgb(var(--color-white) / 0.1);
     z-index: 100;
     transition: all 0.6s var(--ease-out);
-    display: flex;
+    /* display: flex; */
     align-items: center;
     justify-content: center;
 }
@@ -295,6 +296,7 @@ html { scroll-padding-top: 6rem; }
     cursor: grab;
 }
 #circle-navbar.dragging {
+    display: none;
     cursor: grabbing;
     user-select: none;
 }
@@ -303,6 +305,7 @@ html { scroll-padding-top: 6rem; }
 }
 
 .nav-circle-container {
+    display: none;
     position: relative;
     width: 320px;
     height: 320px;
@@ -480,7 +483,7 @@ html { scroll-padding-top: 6rem; }
 .hero {
     position: relative;
     margin-top:80px ;
-    min-height: 100vh;
+    min-height: 90vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -628,6 +631,7 @@ html { scroll-padding-top: 6rem; }
     transform: translateX(-50%);
     white-space: nowrap;
 }
+
 @media (min-width: 768px) { .experience-watermark { font-size: 6rem; } }
 
 .timeline { position: relative; display: flex; flex-direction: column; gap: 8rem; max-width: 64rem; margin: 0 auto; }
@@ -676,8 +680,8 @@ html { scroll-padding-top: 6rem; }
 }
 .ventures-header {
     display: flex;
+    justify-content: space-around;
     flex-direction: column;
-    justify-content: space-between;
     align-items: flex-start;
     gap: 2rem;
     margin-bottom: 4rem;
