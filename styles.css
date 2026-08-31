@@ -5,7 +5,7 @@
    ========================================================================== */
 :root {
     --font-primary:  "GFS Didot", serif;
-    --font-secondary: "Poppins", sans-serif;
+    --font-secondary: 'Roboto', sans-serif;
 
     --color-bg: 10 10 10;
     --color-bg-alt: 12 12 12;
@@ -161,9 +161,9 @@ svg { display: block; }
     background: none;
     border: none;
     cursor: pointer;
-    font-family: inherit;
+    font-family: var(--font-secondary);
     font-size: 0.9rem;
-    font-weight: 500;
+    font-weight: 300;
     color: rgb(var(--color-slate-300, 203 213 225));
     padding: 0.35rem 0;
     transition: color 0.25s ease;
@@ -479,7 +479,7 @@ html { scroll-padding-top: 6rem; }
 .hero {
     position: relative;
     margin-top:80px ;
-    min-height: 100vh;
+    /* min-height: 100vh; */
     display: flex;
     align-items: center;
     justify-content: center;
