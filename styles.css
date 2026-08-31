@@ -76,7 +76,6 @@ svg { display: block; }
     background-image: url(bg-musnad.png);
     background-size: cover;
 }
-
 .hero {
   position: relative;
   overflow: hidden;
@@ -207,7 +206,7 @@ svg { display: block; }
     background: rgb(var(--color-indigo-600, 79 70 229));
     color: rgb(var(--color-white, 255 255 255));
     border: none;
-    font-family: inherit;
+    font-family: var(--font-secondary);
     font-weight: 700;
     font-size: 0.85rem;
     padding: 0.65rem 1.4rem;
