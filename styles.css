@@ -67,7 +67,7 @@ svg { display: block; }
     color: rgb(var(--color-white));
 }
 
-.bg-surface { background-color: rgb(5 12 51 / 49%); }
+.bg-surface { background-color: rgb(138 138 141 / 42%); }
 .bg-surface-darker { background-color: rgb(var(--color-bg-darker)); }
 .hero {
   position: relative;
