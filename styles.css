@@ -69,32 +69,111 @@ svg { display: block; }
 
 .bg-surface { background-color: rgb(5 12 51 / 49%); }
 .bg-surface-darker { background-color: rgb(var(--color-bg-darker)); }
-
-.hero-glow {
-    position: absolute;
-    inset: 0;
-    background-image: url(bg-musnad.png);
-    background-size: cover;
-}
 .hero {
   position: relative;
   overflow: hidden;
+  min-height: 640px;
 }
 
+/* Bottom fade into next section */
 .hero::after {
   content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 200px; /* adjust based on how gradual you want it */
+  height: 200px;
   background: linear-gradient(
     to bottom,
     transparent 0%,
     rgba(0, 0, 0, 0.6) 50%,
-    #000000 100% /* match this to your next section's exact bg color */
+    #000000 100%
   );
   pointer-events: none;
+  z-index: 2;
+}
+
+.hero-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.hero-glow img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 70% 20%; /* keeps his face in frame by default */
+  transform: scale(1);
+  transform-origin: 70% 20%;
+  transition: transform 0.6s ease, object-position 0.4s ease;
+  display: block;
+}
+
+/* Dark gradient so text stays readable no matter how the photo crops */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.85) 100%),
+    linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.65) 35%, rgba(0,0,0,0.15) 65%, rgba(0,0,0,0) 85%);
+}
+
+.hero-grid,
+.hero-copy,
+.hero-in {
+  position: relative;
+  z-index: 3;
+}
+
+/* ---- Small phones ---- */
+@media (max-width: 575px) {
+  .hero { min-height: 560px; padding-bottom: 2rem; }
+  .hero-glow img {
+    object-position: 62% 12%; /* pulls his face/shoulders into a narrow frame */
+  }
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- Tablets ---- */
+@media (min-width: 576px) and (max-width: 991px) {
+  .hero { min-height: 620px; }
+  .hero-glow img {
+    object-position: 68% 18%;
+  }
+}
+
+/* ---- Desktop: zoom in ---- */
+@media (min-width: 992px) {
+  .hero { min-height: 700px; }
+  .hero-glow img {
+    transform: scale(1.05);
+    object-position: 68% 25%;
+  }
+}
+
+/* ---- Large desktop: zoom in a bit more ---- */
+@media (min-width: 1400px) {
+  .hero-glow img {
+    transform: scale(1);
+    object-position: 62% 22%;
+  }
+}
+/* ---- Small phones ---- */
+@media (max-width: 575px) {
+  .hero { min-height: 560px; padding-bottom: 2rem; }
+  .hero-glow img {
+    object-position: 85% 15%; /* shifted right + slightly up to bring him into frame */
+    transform: scale(1.08);   /* small zoom so he doesn't look too distant */
+    transform-origin: 85% 15%;
+  }
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
 }
 .tech-grid {
     background-image: radial-gradient(rgb(var(--color-indigo-500) / 0.1) 1px, transparent 1px);
@@ -109,10 +188,10 @@ svg { display: block; }
     margin: 0 auto;
     position: relative;
 }
-.section { padding: 8rem 2rem; position: relative; }
-@media (max-width: 767px) { .section { padding: 5rem 1.25rem; } }
+.section { padding: 3rem 2rem; position: relative; }
+@media (max-width: 767px) { .section { padding: 1.5rem 1.25rem; } }
 
-.section-header { text-align: center; margin-bottom: 5rem; }
+.section-header { text-align: center; margin-bottom: 2rem; }
 .section-header .eyebrow {
     font-family: var(--font-secondary);
     color: rgb(var(--color-indigo-500));
@@ -520,7 +599,7 @@ html { scroll-padding-top: 6rem; }
 }
 @media (min-width: 1024px) { .hero-grid { grid-template-columns: 1fr 1fr; } }
 
-.hero-copy { display: flex; flex-direction: column; gap: 2rem; margin-left: 80px; }
+.hero-copy { display: flex; flex-direction: column; gap: 2rem;  }
 
 .hero-badge {
     display: inline-flex;
@@ -631,7 +710,7 @@ html { scroll-padding-top: 6rem; }
   #life-story::before { height: 160px; }
 }
 
-.story-list { display: flex; flex-direction: column; gap: 10rem; }
+.story-list { display: flex; flex-direction: column; gap: 5rem; }
 .story-item {
     display: flex;
     flex-direction: column;
@@ -651,7 +730,7 @@ html { scroll-padding-top: 6rem; }
     object-fit: cover;
     border-radius: 1rem;
     box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.5);
-    filter: grayscale(1);
+    filter: grayscale(0);
     transition: filter 0.7s ease;
 }
 .story-media img:hover { filter: grayscale(0); }
@@ -665,7 +744,7 @@ html { scroll-padding-top: 6rem; }
    ========================================================================== */
 .experience-header { text-align: center; margin-bottom: 8rem; position: relative; }
 .experience-watermark {
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: 900;
     color: rgb(var(--color-white) / 0.05);
     position: absolute;
@@ -919,7 +998,7 @@ html { scroll-padding-top: 6rem; }
    Owner message
    ========================================================================== */
 .message-section {
-    padding: 10rem 2rem;
+    padding: 6rem 2rem;
     background: rgb(var(--color-indigo-600));
     position: relative;
     overflow: hidden;
@@ -1040,6 +1119,17 @@ html { scroll-padding-top: 6rem; }
     background: linear-gradient(to bottom, rgb(var(--color-indigo-500)), rgb(var(--color-purple-500)));
     transform: translateX(-50%);
     box-shadow: 0 0 12px rgb(var(--color-indigo-500) / 0.6);
+}
+
+/* On mobile the timeline collapses to a single column with dots pinned to
+   the left of each item (see .timeline-dot). Keep the progress line aligned
+   with that same dot column instead of the container's horizontal center,
+   so it no longer cuts through the heading/paragraph text. */
+@media (max-width: 767px) {
+    .experience-line {
+        left: 0.75rem;
+        transform: none;
+    }
 }
 
 /* Focus visibility for accessibility */
