@@ -25,13 +25,13 @@
   display: flex; align-items: center; gap: 10px;
   font-family: 'Roboto', sans-serif;
   font-size: .72rem; letter-spacing: .18em; text-transform: uppercase;
-  color: #6b7a3a;
+  color: #FFFF;
   margin: 0;
 }
-.logo-slider__head .eyebrow::before{ content:""; width:22px; height:1px; background: #6b7a3a; display:inline-block; }
+.logo-slider__head .eyebrow::before{ content:""; width:22px; height:1px; background: #6366f1; display:inline-block; }
 .logo-slider__head p{
   font-family: "Open Sans", sans-serif; font-size: .78rem;
-  color: #78756a; margin: 0; letter-spacing: .01em;
+  color: #FFFF; margin: 0; letter-spacing: .01em;
 }
 
 /* Viewport: hides overflow and hosts the two fade masks */
@@ -80,7 +80,7 @@
   width: auto;
   max-width: 160px;
   object-fit: contain;
-  filter: grayscale(1);
+  /* filter: grayscale(1); */
   opacity: .55;
   transition: filter .35s ease, opacity .35s ease, transform .35s ease;
   pointer-events: none;   /* click target is the whole .logo-slide link */
