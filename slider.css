@@ -81,21 +81,21 @@
   max-width: 160px;
   object-fit: contain;
   /* filter: grayscale(1); */
-  opacity: .55;
-  transition: filter .35s ease, opacity .35s ease, transform .35s ease;
+  /* opacity: .55; */
+  /* transition: filter .35s ease, opacity .35s ease, transform .35s ease; */
   pointer-events: none;   /* click target is the whole .logo-slide link */
 }
 
 /* Hover feedback on the individual logo */
 .logo-slide:hover img{
-  filter: grayscale(0);
+  /* filter: grayscale(0); */
   opacity: 1;
   transform: translateY(-2px) scale(1.04);
 }
 
 /* Optional focus state for keyboard navigation */
 .logo-slide:focus-visible img{
-  filter: grayscale(0);
+  /* filter: grayscale(0); */
   opacity: 1;
   outline: 2px solid #6b7a3a;
   outline-offset: 4px;
