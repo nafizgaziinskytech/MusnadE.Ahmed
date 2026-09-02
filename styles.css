@@ -695,7 +695,7 @@ html { scroll-padding-top: 6rem; }
    starts at the page/hero's dark base tone and fades to fully transparent,
    letting the section's own bg-surface tint (rgb(5 12 51 / 49%) over
    rgb(10 10 10)) take over naturally as you scroll past it. */
-#life-story::before {
+/* #life-story::before {
   content: "";
   position: absolute;
   top: 0;
@@ -708,7 +708,7 @@ html { scroll-padding-top: 6rem; }
 }
 @media (max-width: 767px) {
   #life-story::before { height: 160px; }
-}
+} */
 
 .story-list { display: flex; flex-direction: column; gap: 5rem; }
 .story-item {
