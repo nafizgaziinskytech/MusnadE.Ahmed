@@ -50,7 +50,7 @@ body {
     margin: 0;
     font-family: var(--font-secondary);
     background-color: rgb(var(--color-bg));
-    color: rgb(var(--color-bg-darker));
+    color: #0000;
     overflow-x: hidden;
     line-height: 1.4;
 }
