@@ -312,7 +312,7 @@ svg { display: block; }
 .nav-link.active { color: rgb(var(--color-indigo-300, 165 180 252)); }
 
 .nav-cta {
-    background: rgb(var(--color-indigo-600, 79 70 229));
+    background: rgb(20 110 245);
     color: rgb(var(--color-white, 255 255 255));
     border: none;
     font-family: var(--font-secondary);
@@ -595,7 +595,7 @@ html { scroll-padding-top: 6rem; }
 .btn svg { width: 16px; height: 16px; transition: transform 0.25s ease; }
 .btn:hover svg { transform: translateX(4px); }
 
-.btn-primary { background: rgb(var(--color-indigo-600)); color: rgb(var(--color-white)); }
+.btn-primary { background: rgb(24 10 219); color: rgb(var(--color-white)); }
 .btn-primary:hover { background: rgb(var(--color-indigo-700)); }
 
 .btn-secondary {
@@ -796,7 +796,7 @@ html { scroll-padding-top: 6rem; }
     display: none;
     font-size: 3rem;
     font-weight: 700;
-    color: rgb(var(--color-indigo-500));
+    color: rgb(20 110 245);
 }
 @media (min-width: 768px) { .timeline-year { display: block; } }
 .timeline-year.align-right { text-align: right; }
@@ -933,7 +933,7 @@ html { scroll-padding-top: 6rem; }
 @media (min-width: 768px) { .motive-quote { font-size: 3.75rem; } }
 .motive-quote-accent {
     font-style: italic;
-    background: linear-gradient(90deg, rgb(var(--color-indigo-400)), rgb(var(--color-purple-400)));
+    background: linear-gradient(90deg, rgb(15 107 244), rgb(89 239 239));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -1095,7 +1095,7 @@ html { scroll-padding-top: 6rem; }
     border-radius: 50%;
     border: 4px solid rgb(var(--color-black) / 0.1);
     box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.12);
-    filter: grayscale(1);
+    filter: grayscale(0);
 }
 .message-author-name { font-size: 1.25rem; font-weight: 700; color: rgb(var(--color-ink)); }
 .message-author-role { color: rgb(var(--color-ink-muted)); }
@@ -1167,7 +1167,7 @@ html { scroll-padding-top: 6rem; }
     top: 0;
     width: 2px;
     height: 0;
-    background: linear-gradient(to bottom, rgb(var(--color-indigo-500)), rgb(var(--color-purple-500)));
+    background: linear-gradient(to bottom, rgb(8 102 255), rgb(var(--color-purple-500)));
     transform: translateX(-50%);
     box-shadow: 0 0 12px rgb(var(--color-indigo-500) / 0.6);
 }
