@@ -897,9 +897,9 @@ html { scroll-padding-top: 6rem; }
 #ventures .logo-slider__head { margin-bottom: 1.5rem; }
 #ventures .slider-track img,
 #ventures .slider-track svg {
-    filter: grayscale(1);
-    opacity: 0.75;
-    transition: filter 0.3s ease, opacity 0.3s ease;
+    filter: grayscale(0);
+    opacity: 1;
+    /* transition: filter 0.3s ease, opacity 0.3s ease; */
 }
 #ventures .slider-track img:hover,
 #ventures .slider-track svg:hover {
