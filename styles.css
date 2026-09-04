@@ -4,38 +4,51 @@
    Design tokens
    ========================================================================== */
 :root {
-    --font-primary:  "GFS Neohellenic", serif;
+    --font-primary:  "GFS Didot", serif;
     --font-secondary: 'Roboto', sans-serif;
 
-    --color-bg: 10 10 10;
+    --color-bg: 8 8 8;
     --color-bg-alt: 12 12 12;
-    --color-bg-darker: 5 5 5;
-    --color-bg-darker: 255 255 255;
+    --color-bg-darker: 0 0 0;
+    --color-white: 255 255 255;
     --color-black: 0 0 0;
 
-    --color-indigo-200: 199 210 254;
-    --color-indigo-300: 165 180 252;
-    --color-indigo-400: 129 140 248;
-    --color-indigo-500: 99 102 241;
-    --color-indigo-600: 79 70 229;
-    --color-indigo-700: 67 56 202;
-    --color-purple-400: 192 132 252;
-    --color-purple-500: 168 85 247;
-    --color-purple-600: 147 51 234;
-    --color-blue-400: 96 165 250;
-    --color-blue-500: 59 130 246;
-    --color-blue-600: 37 99 235;
-    --color-emerald-400: 52 211 153;
-    --color-emerald-500: 16 185 129;
-    --color-emerald-600: 5 150 105;
-    --color-amber-400: 251 191 36;
-    --color-amber-500: 245 158 11;
-    --color-amber-600: 217 119 6;
+    /* Monochrome accent scale — replaces the former indigo/purple/blue
+       palette so every button, link, divider, and icon across the site
+       renders in black/white/gray only. Kept under the original variable
+       names so no selectors below had to change. */
+    --color-indigo-200: 230 230 230;
+    --color-indigo-300: 205 205 205;
+    --color-indigo-400: 165 165 165;
+    --color-indigo-500: 135 135 135;
+    --color-indigo-600: 30 30 30;
+    --color-indigo-700: 15 15 15;
+    --color-purple-400: 185 185 185;
+    --color-purple-500: 135 135 135;
+    --color-purple-600: 55 55 55;
+    --color-blue-400: 175 175 175;
+    --color-blue-500: 125 125 125;
+    --color-blue-600: 45 45 45;
+    --color-emerald-400: 195 195 195;
+    --color-emerald-500: 145 145 145;
+    --color-emerald-600: 65 65 65;
+    --color-amber-400: 170 170 170;
+    --color-amber-500: 120 120 120;
+    --color-amber-600: 40 40 40;
 
-    --color-slate-300: 203 213 225;
-    --color-slate-400: 148 163 184;
-    --color-slate-500: 100 116 139;
-    --color-slate-600: 71 85 105;
+    /* Body-copy grays for DARK sections (hero, experience, motive,
+       blogs, footer) — light enough to read on a near-black background. */
+    --color-slate-300: 225 225 225;
+    --color-slate-400: 175 175 175;
+    --color-slate-500: 140 140 140;
+    --color-slate-600: 90 90 90;
+
+    /* Body-copy / surface tokens for WHITE sections (life-story,
+       ventures, gallery, owner message). */
+    --color-ink: 17 17 17;
+    --color-ink-muted: 82 82 82;
+    --color-paper: 255 255 255;
+    --color-paper-alt: 246 246 246;
 
     --max-width: 1280px;
     --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -50,7 +63,7 @@ body {
     margin: 0;
     font-family: var(--font-secondary);
     background-color: rgb(var(--color-bg));
-    color: #0000;
+    color: rgb(var(--color-white));
     overflow-x: hidden;
     line-height: 1.4;
 }
@@ -64,10 +77,21 @@ svg { display: block; }
 
 ::selection {
     background: rgb(var(--color-indigo-500));
-    color: rgb(var(--color-bg-darker));
+    color: rgb(var(--color-white));
 }
 
-.bg-surface { background-color: #fff; }
+/* WHITE sections: life-story, ventures, gallery — alternates with the
+   black .section sections (experience, motive, blogs) between them. */
+.bg-surface {
+    background-color: rgb(var(--color-paper));
+    color: rgb(var(--color-ink));
+}
+.bg-surface .section-title,
+.bg-surface .story-heading,
+.bg-surface .venture-title,
+.bg-surface h1, .bg-surface h2, .bg-surface h3, .bg-surface h4 {
+    color: rgb(var(--color-ink));
+}
 .bg-surface-darker { background-color: rgb(var(--color-bg-darker)); }
 .hero {
   position: relative;
@@ -192,13 +216,19 @@ svg { display: block; }
 @media (max-width: 767px) { .section { padding: 1.5rem 1.25rem; } }
 
 .section-header { text-align: center; margin-bottom: 2rem; }
-.section-header .eyebrow {
+/* Generic fallback so any standalone .eyebrow label (e.g. the logo-slider
+   "Client Partners" tag, which sits outside .section-header) is always
+   dark-on-white and legible, not just ones nested under .section-header. */
+.eyebrow {
     font-family: var(--font-secondary);
-    color: rgb(var(--color-indigo-500));
+    color: rgb(var(--color-ink-muted));
     font-weight: 700;
     letter-spacing: 0.3em;
     text-transform: uppercase;
     margin-bottom: 1.5rem;
+}
+.section-header .eyebrow {
+    color: rgb(var(--color-indigo-500));
 }
 .section-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
 @media (min-width: 768px) { .section-title { font-size: 3rem; } }
@@ -235,7 +265,7 @@ svg { display: block; }
 .nav.nav-scrolled {
     background: rgb(var(--color-bg, 10 10 10) / 0.78);
     backdrop-filter: blur(14px);
-    border-bottom-color: rgb(var(--color-bg-darker, 255 255 255) / 0.08);
+    border-bottom-color: rgb(var(--color-white, 255 255 255) / 0.08);
     box-shadow: 0 10px 30px rgb(0 0 0 / 0.25);
 }
 
@@ -247,7 +277,7 @@ svg { display: block; }
     font-size: 1.15rem;
     font-weight: 700;
     letter-spacing: -0.02em;
-    color: rgb(var(--color-bg-darker, 255 255 255));
+    color: rgb(var(--color-white, 255 255 255));
     padding: 0;
     transition: color 0.25s ease;
 }
@@ -276,14 +306,14 @@ svg { display: block; }
     background: linear-gradient(90deg, rgb(var(--color-indigo-500, 99 102 241)), rgb(var(--color-purple-500, 168 85 247)));
     transition: left 0.3s var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)), right 0.3s var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1));
 }
-.nav-link:hover { color: rgb(var(--color-bg-darker, 255 255 255)); }
+.nav-link:hover { color: rgb(var(--color-white, 255 255 255)); }
 .nav-link:hover::after,
 .nav-link.active::after { left: 0; right: 0; }
 .nav-link.active { color: rgb(var(--color-indigo-300, 165 180 252)); }
 
 .nav-cta {
     background: rgb(var(--color-indigo-600, 79 70 229));
-    color: rgb(var(--color-bg-darker, 255 255 255));
+    color: rgb(var(--color-white, 255 255 255));
     border: none;
     font-family: var(--font-secondary);
     font-weight: 700;
@@ -302,9 +332,9 @@ svg { display: block; }
     justify-content: center;
     width: 2.5rem; height: 2.5rem;
     border-radius: 0.65rem;
-    background: rgb(var(--color-bg-darker, 255 255 255) / 0.05);
-    border: 1px solid rgb(var(--color-bg-darker, 255 255 255) / 0.1);
-    color: rgb(var(--color-bg-darker, 255 255 255));
+    background: rgb(var(--color-white, 255 255 255) / 0.05);
+    border: 1px solid rgb(var(--color-white, 255 255 255) / 0.1);
+    color: rgb(var(--color-white, 255 255 255));
     cursor: pointer;
     transition: background 0.25s ease;
 }
@@ -331,7 +361,7 @@ svg { display: block; }
     padding: 0 1.5rem;
     background: rgb(var(--color-bg, 10 10 10) / 0.97);
     backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgb(var(--color-bg-darker, 255 255 255) / 0.08);
+    border-bottom: 1px solid rgb(var(--color-white, 255 255 255) / 0.08);
     transition: max-height 0.45s var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)), opacity 0.3s ease, padding 0.45s var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1));
 }
 .mobile-menu.open { max-height: 32rem; opacity: 1; padding: 5.5rem 1.5rem 2rem; }
@@ -344,7 +374,7 @@ svg { display: block; }
     font-weight: 600;
     color: rgb(var(--color-slate-300, 203 213 225));
     padding: 1rem 0;
-    border-bottom: 1px solid rgb(var(--color-bg-darker, 255 255 255) / 0.06);
+    border-bottom: 1px solid rgb(var(--color-white, 255 255 255) / 0.06);
     cursor: pointer;
     transition: color 0.2s ease;
 }
@@ -374,10 +404,10 @@ html { scroll-padding-top: 6rem; }
     transform: translateY(-50%);
     width: 220px;
     height: 460px;
-    background: rgb(var(--color-bg-darker) / 0.04);
+    background: rgb(var(--color-white) / 0.04);
     backdrop-filter: blur(14px);
     border-radius: 0 220px 220px 0;
-    border: 1px solid rgb(var(--color-bg-darker) / 0.1);
+    border: 1px solid rgb(var(--color-white) / 0.1);
     z-index: 100;
     transition: all 0.6s var(--ease-out);
     /* display: flex; */
@@ -431,7 +461,7 @@ html { scroll-padding-top: 6rem; }
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    color: rgb(var(--color-bg-darker) / 0.5);
+    color: rgb(var(--color-white) / 0.5);
     transition: color 0.35s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.35s ease, background 0.35s ease;
 }
 .nav-icon-wrap svg { width: 18px; height: 18px; }
@@ -470,7 +500,7 @@ html { scroll-padding-top: 6rem; }
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: rgb(var(--color-bg-darker));
+    color: rgb(var(--color-white));
     pointer-events: none;
     display: flex;
 }
@@ -495,8 +525,8 @@ html { scroll-padding-top: 6rem; }
     transition: opacity 0.4s ease;
 }
 #circle-navbar:hover .nav-handle { opacity: 0; }
-.nav-handle .dot { width: 4px; height: 4px; background: rgb(var(--color-bg-darker)); border-radius: 50%; }
-.nav-handle .bar { width: 4px; height: 2rem; background: rgb(var(--color-bg-darker)); border-radius: 2px; }
+.nav-handle .dot { width: 4px; height: 4px; background: rgb(var(--color-white)); border-radius: 50%; }
+.nav-handle .bar { width: 4px; height: 2rem; background: rgb(var(--color-white)); border-radius: 2px; }
 
 /* ==========================================================================
    Scroll reveal
@@ -557,7 +587,7 @@ html { scroll-padding-top: 6rem; }
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgb(var(--color-bg-darker) / 0.25), transparent 60%);
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgb(var(--color-white) / 0.25), transparent 60%);
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -565,15 +595,15 @@ html { scroll-padding-top: 6rem; }
 .btn svg { width: 16px; height: 16px; transition: transform 0.25s ease; }
 .btn:hover svg { transform: translateX(4px); }
 
-.btn-primary { background: rgb(var(--color-indigo-600)); color: rgb(var(--color-bg-darker)); }
+.btn-primary { background: rgb(var(--color-indigo-600)); color: rgb(var(--color-white)); }
 .btn-primary:hover { background: rgb(var(--color-indigo-700)); }
 
 .btn-secondary {
     background: transparent;
-    color: rgb(var(--color-bg-darker));
-    border: 1px solid rgb(var(--color-bg-darker) / 0.1);
+    color: rgb(var(--color-white));
+    border: 1px solid rgb(var(--color-white) / 0.1);
 }
-.btn-secondary:hover { background: rgb(var(--color-bg-darker) / 0.05); }
+.btn-secondary:hover { background: rgb(var(--color-white) / 0.05); }
 
 /* ==========================================================================
    Hero
@@ -669,10 +699,10 @@ html { scroll-padding-top: 6rem; }
 }
 .hero-portrait-frame {
     position: relative;
-    border: 1px solid rgb(var(--color-bg-darker) / 0.1);
+    border: 1px solid rgb(var(--color-white) / 0.1);
     padding: 1rem;
     border-radius: 2.5rem;
-    background: rgb(var(--color-bg-darker) / 0.05);
+    background: rgb(var(--color-white) / 0.05);
     backdrop-filter: blur(4px);
 }
 .hero-portrait-frame img {
@@ -691,24 +721,23 @@ html { scroll-padding-top: 6rem; }
 }
 
 /* Blend seam: sits at the TOP of the story section (not in the hero) so the
-   hero-to-story scroll transition doesn't show a hard edge. Color-matched:
-   starts at the page/hero's dark base tone and fades to fully transparent,
-   letting the section's own bg-surface tint (rgb(5 12 51 / 49%) over
-   rgb(10 10 10)) take over naturally as you scroll past it. */
-/* #life-story::before {
+   hero-to-story scroll transition doesn't show a hard edge. Fades from the
+   hero's dark base tone down to fully transparent, letting the section's
+   own white bg-surface background take over naturally as you scroll past it. */
+#life-story::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 260px;
-  background: linear-gradient(to bottom, rgb(10 10 10) -24%, rgb(0 0 0) 18%, rgba(8 11 30 / 0) 100%);
+  height: 160px;
+  background: linear-gradient(to bottom, rgb(var(--color-bg)) 0%, rgb(0 0 0 / 0) 100%);
   pointer-events: none;
   z-index: 0;
 }
 @media (max-width: 767px) {
   #life-story::before { height: 160px; }
-} */
+}
 
 .story-list { display: flex; flex-direction: column; gap: 5rem; }
 .story-item {
@@ -729,15 +758,15 @@ html { scroll-padding-top: 6rem; }
     height: 400px;
     object-fit: cover;
     border-radius: 1rem;
-    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.5);
-    filter: grayscale(0);
+    box-shadow: 0 20px 40px -12px rgb(0 0 0 / 0.25);
+    filter: grayscale(1);
     transition: filter 0.7s ease;
 }
 .story-media img:hover { filter: grayscale(0); }
 
-.story-year { display: block; margin-bottom: 1rem; font-size: 1.25rem; font-weight: 700; color: rgb(var(--color-indigo-500)); }
-.story-heading { font-size: 1.875rem; font-weight: 700; margin-bottom: 1.5rem; }
-.story-text {font-family:var(--font-secondary); font-size: 1.125rem; line-height: 1.7; color: rgb(var(--color-slate-400)); }
+.story-year { display: block; margin-bottom: 1rem; font-size: 1.25rem; font-weight: 700; color: rgb(var(--color-ink)); letter-spacing: 0.02em; }
+.story-heading { font-size: 1.875rem; font-weight: 700; margin-bottom: 1.5rem; color: rgb(var(--color-ink)); }
+.story-text {font-family:var(--font-secondary); font-size: 1.125rem; line-height: 1.7; color: rgb(var(--color-ink-muted)); }
 
 /* ==========================================================================
    Experience timeline
@@ -746,7 +775,7 @@ html { scroll-padding-top: 6rem; }
 .experience-watermark {
     font-size: 3rem;
     font-weight: 900;
-    color: rgb(var(--color-bg-darker) / 0.05);
+    color: rgb(var(--color-white) / 0.05);
     position: absolute;
     top: -3rem;
     left: 50%;
@@ -797,9 +826,6 @@ html { scroll-padding-top: 6rem; }
 /* ==========================================================================
    Ventures
    ========================================================================== */
-.ventures{
-    background: linear-gradient(45deg, #1b3bdb7a, transparent);
-}
 .ventures-header {
     display: flex;
     justify-content: space-around;
@@ -809,19 +835,20 @@ html { scroll-padding-top: 6rem; }
     margin-bottom: 4rem;
 }
 @media (min-width: 768px) { .ventures-header { flex-direction: row; align-items: flex-end; } }
-.ventures-header h2 { margin-bottom: 1rem; }
-.ventures-header p { font-family: var(--font-secondary);color: rgb(var(--color-slate-400)); max-width: 36rem; }
+.ventures-header h2 { margin-bottom: 1rem; color: rgb(var(--color-ink)); }
+.ventures-header p { font-family: var(--font-secondary);color: rgb(var(--color-ink-muted)); max-width: 36rem; }
 
 .ventures-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
 @media (min-width: 768px) { .ventures-grid { grid-template-columns: repeat(3, 1fr); } }
 
 .venture-card {
-    background: rgb(var(--color-bg-darker) / 0.05);
-    border: 1px solid rgb(var(--color-bg-darker) / 0.1);
+    background: rgb(var(--color-black) / 0.02);
+    border: 1px solid rgb(var(--color-black) / 0.1);
     padding: 2rem;
     border-radius: 1.5rem;
     transition: background 0.5s ease, border-color 0.5s ease;
 }
+.venture-title { color: rgb(var(--color-ink)); }
 .venture-icon {
     width: 4rem;
     height: 4rem;
@@ -835,7 +862,7 @@ html { scroll-padding-top: 6rem; }
 .venture-icon svg { width: 28px; height: 28px; }
 .venture-card:hover .venture-icon { transform: scale(1.1); }
 .venture-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; }
-.venture-text { color: rgb(var(--color-slate-400)); margin-bottom: 1.5rem; }
+.venture-text { color: rgb(var(--color-ink-muted)); margin-bottom: 1.5rem; }
 .venture-link { display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; font-weight: 700; }
 .venture-link svg { width: 14px; height: 14px; }
 
@@ -858,6 +885,27 @@ html { scroll-padding-top: 6rem; }
 .venture-card.c-amber:hover { background: rgb(var(--color-amber-600) / 0.1); border-color: rgb(var(--color-amber-500) / 0.3); }
 .venture-card.c-amber .venture-icon { background: rgb(var(--color-amber-600) / 0.2); color: rgb(var(--color-amber-500)); }
 .venture-card.c-amber .venture-link { color: rgb(var(--color-amber-400)); }
+
+/* ==========================================================================
+   Logo slider — safety net for the white ventures section
+   ========================================================================== */
+/* NOTE: slider.css wasn't part of this handoff. It may assume a dark
+   backdrop (edge-fade masks, or client logos exported in white). These
+   rules only set what's safe to assume from here — you may still need to
+   swap any all-white logo marks in slider.css for full-color or dark
+   versions so they don't disappear on this now-white background. */
+#ventures .logo-slider__head { margin-bottom: 1.5rem; }
+#ventures .slider-track img,
+#ventures .slider-track svg {
+    filter: grayscale(1);
+    opacity: 0.75;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+}
+#ventures .slider-track img:hover,
+#ventures .slider-track svg:hover {
+    filter: grayscale(0);
+    opacity: 1;
+}
 
 /* ==========================================================================
    Motive
@@ -897,7 +945,7 @@ html { scroll-padding-top: 6rem; }
 /* ==========================================================================
    Gallery
    ========================================================================== */
-.gallery-intro { font-family: var(--font-secondary);color: rgb(var(--color-slate-400)); }
+.gallery-intro { font-family: var(--font-secondary);color: rgb(var(--color-ink-muted)); }
 .gallery-intro .muted { display: none; font-family: var(--font-secondary); color: rgb(var(--color-slate-600)); }
 
 .gallery-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
@@ -919,9 +967,10 @@ html { scroll-padding-top: 6rem; }
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.7s ease;
+    filter: grayscale(1);
+    transition: transform 0.7s ease, filter 0.7s ease;
 }
-.gallery-item:hover img { transform: scale(1.1); }
+.gallery-item:hover img { transform: scale(1.1); filter: grayscale(0); }
 
 .gallery-overlay {
     position: absolute;
@@ -969,8 +1018,8 @@ html { scroll-padding-top: 6rem; }
 
 .blog-card { cursor: pointer; }
 .blog-image-wrap { overflow: hidden; border-radius: 1rem; margin-bottom: 1.5rem; height: 16rem; }
-.blog-image-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-.blog-card:hover .blog-image-wrap img { transform: scale(1.05); }
+.blog-image-wrap img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: transform 0.5s ease, filter 0.5s ease; }
+.blog-card:hover .blog-image-wrap img { transform: scale(1.05); filter: grayscale(0); }
 
 .blog-body { display: flex; flex-direction: column; gap: 1rem; }
 .blog-meta { display: flex; align-items: center; gap: 1rem; font-size: 0.875rem; font-weight: 700; }
@@ -999,22 +1048,23 @@ html { scroll-padding-top: 6rem; }
    ========================================================================== */
 .message-section {
     padding: 6rem 2rem;
-    background: rgb(var(--color-indigo-600));
+    background: rgb(var(--color-paper));
+    color: rgb(var(--color-ink));
     position: relative;
     overflow: hidden;
 }
 .message-texture {
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(rgb(255 255 255 / 0.15) 1px, transparent 1px);
+    background-image: radial-gradient(rgb(0 0 0 / 0.12) 1px, transparent 1px);
     background-size: 18px 18px;
-    opacity: 0.4;
+    opacity: 0.5;
 }
 .message-inner { max-width: 56rem; margin: 0 auto; text-align: center; position: relative; z-index: 10; }
 .message-text {
     font-size: 2.25rem;
     font-weight: 700;
-    color: rgb(var(--color-bg-darker));
+    color: rgb(var(--color-ink));
     margin-bottom: 3rem;
     min-height: 8rem;
 }
@@ -1024,7 +1074,7 @@ html { scroll-padding-top: 6rem; }
     display: inline-block;
     width: 3px;
     margin-left: 4px;
-    background: rgb(var(--color-bg-darker));
+    background: rgb(var(--color-ink));
     animation: blink-cursor 0.9s steps(1) infinite;
 }
 @keyframes blink-cursor { 50% { opacity: 0; } }
@@ -1043,17 +1093,18 @@ html { scroll-padding-top: 6rem; }
     width: 5rem;
     height: 5rem;
     border-radius: 50%;
-    border: 4px solid rgb(var(--color-bg-darker) / 0.2);
-    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.3);
+    border: 4px solid rgb(var(--color-black) / 0.1);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.12);
+    filter: grayscale(1);
 }
-.message-author-name { font-size: 1.25rem; font-weight: 700; color: rgb(var(--color-bg-darker)); }
-.message-author-role { color: rgb(var(--color-indigo-200)); }
+.message-author-name { font-size: 1.25rem; font-weight: 700; color: rgb(var(--color-ink)); }
+.message-author-role { color: rgb(var(--color-ink-muted)); }
 .message-author-text { text-align: left; }
 
 /* ==========================================================================
    Footer
    ========================================================================== */
-.footer { padding: 5rem 2rem; border-top: 1px solid rgb(var(--color-bg-darker) / 0.05); }
+.footer { padding: 5rem 2rem; border-top: 1px solid rgb(var(--color-white) / 0.05); }
 .footer-grid { max-width: var(--max-width); margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 3rem; }
 @media (min-width: 768px) { .footer-grid { grid-template-columns: repeat(4, 1fr); } }
 
@@ -1071,37 +1122,37 @@ html { scroll-padding-top: 6rem; }
 .footer-social-link {
     width: 2.5rem; height: 2.5rem;
     border-radius: 50%;
-    background: rgb(var(--color-bg-darker) / 0.05);
+    background: rgb(var(--color-white) / 0.05);
     display: flex; align-items: center; justify-content: center;
     transition: background 0.25s ease;
 }
 .footer-social-link svg { width: 16px; height: 16px; }
 .footer-social-link:hover { background: rgb(var(--color-indigo-600)); }
 
-.footer-col-title { font-weight: 700; margin-bottom: 1.5rem; color: rgb(var(--color-bg-darker)); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.15em; }
+.footer-col-title { font-weight: 700; margin-bottom: 1.5rem; color: rgb(var(--color-white)); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.15em; }
 .footer-list { display: flex; flex-direction: column; gap: 1rem; font-size: 0.875rem; color: rgb(var(--color-slate-400)); }
 .footer-list a:hover { color: rgb(var(--color-indigo-400)); }
 
 .footer-col p { color: rgb(var(--color-slate-400)); font-size: 0.875rem; margin-bottom: 1.5rem; }
 .footer-newsletter { display: flex; gap: 0.5rem; }
 .footer-input {
-    background: rgb(var(--color-bg-darker) / 0.05);
-    border: 1px solid rgb(var(--color-bg-darker) / 0.1);
+    background: rgb(var(--color-white) / 0.05);
+    border: 1px solid rgb(var(--color-white) / 0.1);
     border-radius: 0.5rem;
     padding: 0.5rem 1rem;
     font-size: 0.875rem;
-    color: rgb(var(--color-bg-darker));
+    color: rgb(var(--color-white));
     width: 100%;
     transition: border-color 0.25s ease;
 }
 .footer-input:focus { outline: none; border-color: rgb(var(--color-indigo-500)); }
-.footer-button { background: rgb(var(--color-indigo-600)); padding: 0.5rem 1rem; border-radius: 0.5rem; font-size: 0.875rem; font-weight: 700; color: rgb(var(--color-bg-darker)); }
+.footer-button { background: rgb(var(--color-indigo-600)); padding: 0.5rem 1rem; border-radius: 0.5rem; font-size: 0.875rem; font-weight: 700; color: rgb(var(--color-white)); }
 
 .footer-bottom {
     max-width: var(--max-width);
     margin: 5rem auto 0;
     padding-top: 2rem;
-    border-top: 1px solid rgb(var(--color-bg-darker) / 0.05);
+    border-top: 1px solid rgb(var(--color-white) / 0.05);
     text-align: center;
     color: rgb(var(--color-slate-600));
     font-size: 0.75rem;
