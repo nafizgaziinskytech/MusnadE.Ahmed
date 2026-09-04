@@ -673,7 +673,7 @@ html { scroll-padding-top: 6rem; }
 }
 @media (min-width: 768px) { .hero-title { font-size: 38px; } }
 .hero-title-gradient {
-    background: linear-gradient(90deg, rgb(var(--color-indigo-500)), rgb(var(--color-purple-500)));
+    background: linear-gradient(90deg, rgb(46 88 183), rgb(42 77 175));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -1167,7 +1167,7 @@ html { scroll-padding-top: 6rem; }
     top: 0;
     width: 2px;
     height: 0;
-    background: linear-gradient(to bottom, rgb(8 102 255), rgb(var(--color-purple-500)));
+    background: linear-gradient(to bottom, rgb(67 124 217 / 49%), rgb(0 20 255));
     transform: translateX(-50%);
     box-shadow: 0 0 12px rgb(var(--color-indigo-500) / 0.6);
 }
