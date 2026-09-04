@@ -4,7 +4,7 @@
    Design tokens
    ========================================================================== */
 :root {
-    --font-primary:  "GFS Didot", serif;
+    --font-primary:  "Poppins", serif;
     --font-secondary: 'Roboto', sans-serif;
 
     --color-bg: 8 8 8;
@@ -724,7 +724,7 @@ html { scroll-padding-top: 6rem; }
    hero-to-story scroll transition doesn't show a hard edge. Fades from the
    hero's dark base tone down to fully transparent, letting the section's
    own white bg-surface background take over naturally as you scroll past it. */
-#life-story::before {
+/* #life-story::before {
   content: "";
   position: absolute;
   top: 0;
@@ -737,7 +737,7 @@ html { scroll-padding-top: 6rem; }
 }
 @media (max-width: 767px) {
   #life-story::before { height: 160px; }
-}
+} */
 
 .story-list { display: flex; flex-direction: column; gap: 5rem; }
 .story-item {
