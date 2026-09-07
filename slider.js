@@ -34,14 +34,9 @@ const SLIDERS = [
   {
     trackId: "sliderTrack2",
     logos: [
-      { src: "skylightgbl.png", url: "https://skylightgbl.com/", alt: "skylight-global" },
-      { src: "rcm.png",         url: "https://skylightrcm.com/", alt: "skyligh-RCM" },
-      { src: "codezzi.png",     url: "https://www.codezzi.com/", alt: "Codezzi" },
-      { src: "sky-reva.png",    url: "https://skyreva.com/",     alt: "SkyReva" },
-      { src: "markettor.png",   url: "https://canvas.example.com", alt: "Marketor" },
+     
       { src: "jlp.png",         url: "https://janitorialleadspro.com/", alt: "janitorial-leads-pro" },
       { src: "acdc.png",        url: "https://allcityductcleaning.com/", alt: "All-City-Duct-Cleaning" },
-      { src: "freight.png",     url: "https://www.skyfreightsquad.com/", alt: "SwiftFlow" },
     ],
   },
 ];
